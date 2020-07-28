@@ -39,6 +39,7 @@
                 <a class="nav-item nav-link text-sm ml-3" href="#">Produk</a>
                 <a class="nav-item nav-link text-sm ml-3" href="#">Kontak Kami</a>
                 <a class="nav-item nav-link text-sm ml-7" style="font-weight: bold" href="#">Dashboard</a>
+                <a class="nav-item nav-link text-sm ml-7" style="font-weight: bold" href="#">Login</a>
                 <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
 
             </div>
