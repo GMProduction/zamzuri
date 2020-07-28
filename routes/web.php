@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Main\MainController@index');
 Route::get('/product/{id}', 'Main\MainController@detail');
 
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 //LOGIN
 Route::get('/login', function () {
     return view('login.login');
@@ -48,6 +52,7 @@ Route::get('/admin/transaksi', function () {
 Route::get('/admin/detailtransaksi', function () {
     return view('admin.transaksi.detailTransaksi');
 });
+
 
 Route::get('/admin/user', function () {
     return view('admin.user.user');
