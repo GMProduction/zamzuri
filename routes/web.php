@@ -21,6 +21,11 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
+
+Route::get('/payment', function () {
+    return view('payment');
+});
+
 //LOGIN
 Route::get('/login', function () {
     return view('login.login');
