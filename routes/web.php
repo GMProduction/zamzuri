@@ -13,13 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'Main\MainController@index');
 
-Route::get('/detail', function () {
-    return view('detail');
-});
+Route::get('/product/{id}', 'Main\MainController@detail');
 
 //LOGIN
 Route::get('/login', function () {
