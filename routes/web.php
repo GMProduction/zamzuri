@@ -65,3 +65,25 @@ Route::get('/admin/user', function () {
 });
 
 Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi')->name('cetakAdminDataTransaksi');
+
+
+//USER
+Route::get('/user', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user/transaksi', function () {
+    return view('user.transaksi.transaksi');
+});
+
+Route::get('/user/profil', function () {
+    return view('user.profil.profil');
+});
