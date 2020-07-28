@@ -12,10 +12,10 @@
                 <img class="d-block w-100" src="{{asset('assets/img/slider/slider1.jpg')}}" alt="First slide" style="height: 500px; object-fit: cover">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 h-50" src="" alt="Second slide" style="height: 500px; object-fit: cover">
+                <img class="d-block w-100" src="{{asset('assets/img/slider/slider2.jpg')}}" alt="Second slide" style="height: 500px; object-fit: cover">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100 h-50" src="" alt="Third slide" style="height: 500px; object-fit: cover">
+                <img class="d-block w-100" src="{{asset('assets/img/slider/slider3.jpg')}}" alt="Third slide" style="height: 500px; object-fit: cover">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
