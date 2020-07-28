@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Main\MainController@index');
-
 Route::get('/product/{id}', 'Main\MainController@detail');
 
 //LOGIN

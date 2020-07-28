@@ -12,4 +12,5 @@ class Transaction extends Model
     {
         return $this->hasMany(Cart::class);
     }
+
 }
