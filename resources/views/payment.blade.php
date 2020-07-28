@@ -26,7 +26,6 @@
                                 <th scope="col" class="sort text-center" data-sort="budget">Nama Produk</th>
                                 <th scope="col" class="sort text-center" data-sort="budget">Qty</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Harga (hari)</th>
-                                <th scope="col" class="sort text-center" data-sort="completion">Deskripsi</th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -39,7 +38,6 @@
                                 <td class="text-center"> 20</td>
                                 <td class="text-center"> 2</td>
                                 <td class="text-center">@rupiahPrefix(100000)</td>
-                                <td class="text-center">Deskripsi</td>
 
                             </tr>
                             {{--                    @endforeach--}}
