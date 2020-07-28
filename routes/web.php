@@ -27,6 +27,9 @@ Route::get('/payment', function () {
 Route::get('/login', 'Auth\AuthController@pageLogin');
 Route::post('/post-login', 'Auth\AuthController@login');
 
+Route::get('/register', 'Auth\AuthController@index');
+Route::post('/post-register', 'Auth\AuthController@register');
+
 Route::get('/daftaruser', function () {
     return view('login.daftaruser');
 });
@@ -76,3 +79,5 @@ Route::get('/user/transaksi', function () {
 Route::get('/user/profil', function () {
     return view('user.profil.profil');
 });
+
+Route::get('/logout', 'Auth\AuthController@logout');

@@ -40,24 +40,22 @@
         <th> #</th>
         <th> Nama Produk</th>
         <th> Tanggal Sewa</th>
-        <th> Estimasi Kembali</th>
         <th> Tanggal Kembali</th>
         <th> Total</th>
         <th> Pembayaran </th>
-        <th> Denda </th>
         <th> Status</th>
     </tr>
-    @php $i=1; @endphp
-{{--    @foreach($mitra as $m)--}}
-{{--        <tr>--}}
-{{--            <td> {{$i++}}</td>--}}
-{{--            <td> {{$m->username}}</td>--}}
-{{--            <td> {{$m->email}}</td>--}}
-{{--            <td> {{$m->noHp}}</td>--}}
-{{--            <td> {{$m->alamat}}</td>--}}
+    @foreach($transaksi as $key => $t)
+        <tr>
+            <td class="text-center">{{ $loop->index + 1 }}</td>
+            <td></td>
+            <td> {{$t->tgl_sewa}}</td>
+            <td> {{$t->tgl_tempo}}</td>
+            <td> {{$t->alamat}}</td>
+            <td> {{$t->status}}</td>
 
-{{--        </tr>--}}
-{{--    @endforeach--}}
+        </tr>
+    @endforeach
 </table>
 <div style="right:10px;width: 300px;display: inline-block;margin-top:70px">
     <p class="text-center mb-5">Pimpinan</p>
@@ -67,7 +65,7 @@
 <div style="left:10px;width: 300px; margin-left : 100px;display: inline-block">
     <p class="text-center mb-5">Admin</p>
     <p class="text-center">(
-{{--        {{auth()->user()->username}}--}}
+        {{auth()->user()->username}}
         )</p>
 </div>
 
@@ -75,7 +73,7 @@
 <footer class="footer">
     @php $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') ); @endphp
     <p class="text-right small mb-0 mt-0 pt-0 pb-0"> di cetak oleh :
-{{--        {{auth()->user()->username}}--}}
+        {{auth()->user()->username}}
     </p>
     <p class="text-right small mb-0 mt-0 pt-0 pb-0"> tgl: {{ $date->format('d F Y, H:i:s') }} </p>
 </footer>

@@ -75,7 +75,7 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" target="/logout">
+                        <a class="nav-link" href="/logout" target="">
                             <i class="text-red " data-feather="log-out"></i>
                             <span class="nav-link-text text-red" style="margin-left: 10px">keluar</span>
                         </a>
@@ -111,7 +111,7 @@
                                     <div class="col ml--2">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
-                                                <h4 class="mb-0 text-sm">John Snow</h4>
+                                                <h4 class="mb-0 text-sm">{{auth()->user()->username}}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@
                     <img alt="Image placeholder" src="../assets/img/theme/team-4.png">
                   </span>
                                 <div class="media-body  ml-2  d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                    <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->username}}</span>
                                 </div>
                             </div>
                         </a>

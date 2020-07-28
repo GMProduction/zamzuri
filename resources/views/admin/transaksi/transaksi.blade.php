@@ -16,34 +16,37 @@
                         {{--                        </nav>--}}
                     </div>
 
-                    <div class="col-lg-8 col-8">
-                        <div class="row">
-                            <div class="input-daterange datepicker row align-items-center">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    <div class="col-lg-8 col-8 ">
+                        <form action="/admin/transaksi/cetak" method="get">
+                            <div class="row ">
+                                <div class="input-daterange datepicker row align-items-center">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                </div>
+                                                <input class="form-control" name="awal" placeholder="Start date" type="text" value="06/18/2020">
                                             </div>
-                                            <input class="form-control" placeholder="Start date" type="text" value="06/18/2020">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                </div>
+                                                <input class="form-control" name="akhir" placeholder="End date" type="text" value="06/22/2020">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input class="form-control" placeholder="End date" type="text" value="06/22/2020">
-                                        </div>
-                                    </div>
+                                <div class="col-lg-2 mb-auto">
+                                    <button type="submit" class="btn btn-md btn-neutral">Cetak</button>
                                 </div>
                             </div>
-                            <div class="col-lg-2 mb-auto">
-                                <a href="/admin/transaksi/cetak" class="btn btn-md btn-neutral">Cetak</a>
-                            </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -97,10 +100,10 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function () {
-        $('#tabel').DataTable();
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#tabel').DataTable();
+        });
+    </script>
 
 @endsection
