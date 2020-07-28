@@ -33,11 +33,14 @@ class ProdukController extends CustomController
      */
     public function addForm()
     {
-        $data = [
+        $image = $this->generateImageName('gambar');
+        $data  = [
             'nama'      => $this->postField('nama'),
             'harga'     => $this->postField('harga'),
             'deskripsi' => $this->postField('deskripsi'),
+            'url'       => $image,
         ];
+        $this->uploadImage('gambar', $image, 'image');
 
         $this->insert(Products::class, $data);
 
@@ -49,18 +52,21 @@ class ProdukController extends CustomController
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function editForm ($id){
+    public function editForm($id)
+    {
         $data['produk'] = Products::findOrFail($id)->first();
 //        dump($data);die();
-        if($this->request->isMethod('POST')){
+        if ($this->request->isMethod('POST')) {
             $dat = [
                 'nama'      => $this->postField('nama'),
                 'harga'     => $this->postField('harga'),
                 'deskripsi' => $this->postField('deskripsi'),
             ];
             $this->update(Products::class, $dat);
+
             return redirect()->back()->with(['success' => 'success']);
         }
+
         return view('admin.produk.editproduk')->with($data);
     }
 
@@ -69,8 +75,15 @@ class ProdukController extends CustomController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete($id){
-        App\Models\Products::destroy($id);
-        return redirect()->back()->with(['success' => 'success']);
+    public function hapus($id)
+    {
+        try {
+            Products::destroy($id);
+
+            return $this->jsonResponse('success', 200);
+        } catch (\Exception $er) {
+            return $this->jsonResponse('error '.$er, 500);
+
+        }
     }
 }

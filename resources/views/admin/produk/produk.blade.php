@@ -1,6 +1,16 @@
 @extends('admin.base')
 @section('content')
 
+    @if(\Illuminate\Support\Facades\Session::has('success'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: 'Berhasil Menyimpan Data',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+    @endif
     <!-- Header -->
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
@@ -36,22 +46,22 @@
                         <table id="tabel" class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="sort" data-sort="name">#</th>
-                                <th scope="col" class="sort" data-sort="budget">Nama Produk</th>
-                                <th scope="col" class="sort" data-sort="completion">Harga (hari)</th>
-                                <th scope="col" class="sort" data-sort="completion">Deskripsi</th>
-                                <th scope="col" class="sort" data-sort="completion">gambar</th>
-                                <th scope="col" class="sort" data-sort="completion">Action</th>
+                                <th scope="col" class="sort text-center" data-sort="name">#</th>
+                                <th scope="col" class="sort text-center" data-sort="budget">Nama Produk</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">Harga (hari)</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">Deskripsi</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">gambar</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
                             @foreach($produk as $p)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{$p->nama}}</td>
-                                    <td>{{$p->harga}}</td>
-                                    <td>{{$p->deskripsi}}</td>
-                                    <td></td>
+                                    <td class="text-center">{{ $loop->index + 1 }}</td>
+                                    <td class="text-center">{{$p->nama}}</td>
+                                    <td class="text-center">{{$p->harga}}</td>
+                                    <td class="text-center">{{$p->deskripsi}}</td>
+                                    <td class="text-center"><img src="{{asset('uploads/image')}}/{{$p->url}}" height="50"></td>
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
@@ -60,7 +70,7 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 <a class="dropdown-item" href="/admin/editproduk/{{$p->id}}">Edit</a>
-                                                <a class="dropdown-item" href="#!" onclick="hapus()">Delete</a>
+                                                <a class="dropdown-item" href="#!" onclick="hapus('{{$p->id}}','{{$p->name}}')">Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -83,8 +93,25 @@
             $('#tabel').DataTable();
         });
 
-        function hapus() {
-            swal.fire('asdasdasd');
+
+        function hapus(id, name) {
+            Swal.fire({
+                title: 'Apa anda yakin untuk menghapus produk ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then(async (result) => {
+                if (result.value) {
+                    let data = {
+                        '_token' : '{{csrf_token()}}'
+                    };
+                    let get = await $.post('/admin/produk/hapus/'+id,data);
+                    window.location.reload();
+                }
+            })
         }
     </script>
 

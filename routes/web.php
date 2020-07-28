@@ -33,7 +33,7 @@ Route::get('/admin', function () {
 });
 
 Route::get('/admin/produk', 'Admin\ProdukController@index');
-Route::post('/admin/produk/delete/{id}', 'Admin\ProdukController@delete');
+Route::post('/admin/produk/hapus/{id}', 'Admin\ProdukController@hapus');
 
 Route::get('/admin/tambahproduk', function () {
     return view('admin.produk.tambahproduk');
