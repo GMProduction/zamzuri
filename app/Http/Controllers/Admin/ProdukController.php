@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\CustomController;
 use App\Models\Products;
+use Illuminate\Support\Arr;
 
 /**
  * Class ProdukController
@@ -62,6 +63,11 @@ class ProdukController extends CustomController
                 'harga'     => $this->postField('harga'),
                 'deskripsi' => $this->postField('deskripsi'),
             ];
+            if ($this->request->hasFile('gambar')) {
+                $image = $this->generateImageName('gambar');
+                $dat   = Arr::add($dat, 'url', $image);
+                $this->uploadImage('gambar', $image, 'image');
+            }
             $this->update(Products::class, $dat);
 
             return redirect()->back()->with(['success' => 'success']);
