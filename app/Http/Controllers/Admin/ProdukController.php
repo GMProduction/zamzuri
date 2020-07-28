@@ -70,7 +70,7 @@ class ProdukController extends CustomController
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id){
-        Products::destroy($id);
+        App\Models\Products::destroy($id);
         return redirect()->back()->with(['success' => 'success']);
     }
 }
