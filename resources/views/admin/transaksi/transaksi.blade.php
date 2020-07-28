@@ -110,7 +110,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="" class="btn btn-sm btn-primary">Konfirmasi pembayaran</a>
+                                    <a href="" class="btn btn-sm btn-primary">detail</a>
                                 </td>
                             </tr>
                             </tbody>

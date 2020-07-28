@@ -46,6 +46,10 @@ Route::get('/admin/transaksi', function () {
     return view('admin.transaksi.transaksi');
 });
 
+Route::get('/admin/detailtransaksi', function () {
+    return view('admin.transaksi.detailTransaksi');
+});
+
 Route::get('/admin/user', function () {
     return view('admin.user.user');
 });
