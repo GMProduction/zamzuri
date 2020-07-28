@@ -45,7 +45,7 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="url">Harga</label>
+                                            <label for="harga">Harga</label>
                                             <input type="number" id="harga" name="harga"
                                                    class="form-control">
                                         </div>
@@ -53,7 +53,15 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="url">Deskripsi</label>
+                                            <label for="denda">Denda</label>
+                                            <input type="number" id="denda" name="denda"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="deskripsi">Deskripsi</label>
                                             <input type="text" id="deskripsi" name="deskripsi"
                                                    class="form-control">
                                         </div>

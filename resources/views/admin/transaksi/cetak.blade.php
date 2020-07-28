@@ -38,9 +38,13 @@
 <table class="table table-striped">
     <tr>
         <th> #</th>
-        <th> Nama Iklan</th>
-        <th> Tanggal</th>
-        <th> Pembayaran</th>
+        <th> Nama Produk</th>
+        <th> Tanggal Sewa</th>
+        <th> Estimasi Kembali</th>
+        <th> Tanggal Kembali</th>
+        <th> Total</th>
+        <th> Pembayaran </th>
+        <th> Denda </th>
         <th> Status</th>
     </tr>
     @php $i=1; @endphp
