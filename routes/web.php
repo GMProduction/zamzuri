@@ -21,13 +21,15 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/admin/produk', function () {
-    return view('admin.produk.produk');
-});
+Route::get('/admin/produk', 'Admin\ProdukController@index');
+Route::post('/admin/produk/delete/{id}', 'Admin\ProdukController@delete');
 
 Route::get('/admin/tambahproduk', function () {
     return view('admin.produk.tambahproduk');
 });
+Route::post('/admin/tambahproduk', 'Admin\ProdukController@addForm');
+Route::get('/admin/editproduk/{id}', 'Admin\ProdukController@editForm');
+Route::post('/admin/editproduk/{id}', 'Admin\ProdukController@editForm');
 
 Route::get('/admin/transaksi', function () {
     return view('admin.transaksi.transaksi');
