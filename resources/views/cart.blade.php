@@ -14,7 +14,6 @@
         </div>
 
         <div class="card">
-            <!-- Card header -->
 
             <!-- Light table -->
             <div class="table-responsive">
@@ -30,23 +29,51 @@
                     </tr>
                     </thead>
                     <tbody class="list">
-{{--                    @foreach($produk as $p)--}}
-                        <tr>
-                            <td class="text-center"><img src="https://cdn.mos.cms.futurecdn.net/7UKru4akuGz2QcUPp6smqX.jpg" style="height: 100px; width: 100px; object-fit: cover"></td>
-                            <td class="text-center">Kamera DSLR</td>
-                            <td class="text-center"> 20</td>
-                            <td class="text-center"> 2</td>
-                            <td class="text-center">@rupiahPrefix(100000)</td>
-                            <td class="text-center">Deskripsi</td>
+                    {{--                    @foreach($produk as $p)--}}
+                    <tr>
+                        <td class="text-center"><img src="https://cdn.mos.cms.futurecdn.net/7UKru4akuGz2QcUPp6smqX.jpg"
+                                                     style="height: 100px; width: 100px; object-fit: cover"></td>
+                        <td class="text-center">Kamera DSLR</td>
+                        <td class="text-center"> 20</td>
+                        <td class="text-center"> 2</td>
+                        <td class="text-center">@rupiahPrefix(100000)</td>
+                        <td class="text-center">Deskripsi</td>
 
-                        </tr>
-{{--                    @endforeach--}}
+                    </tr>
+                    {{--                    @endforeach--}}
                     </tbody>
                 </table>
             </div>
+        </div>
 
 
-            <!-- Card footer -->
+        <div class="input-daterange datepicker row align-items-center">
+            <div class="col-3 offset-4">
+                <p class="mb-1 text-xs">Tanggal Sewa</p>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Start date" type="text" value="06/18/2020">
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <p class="mb-1 text-xs">Tanggal Kembali</p>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="End date" type="text" value="06/22/2020">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 mt-auto mb-auto ml-auto">
+                <a href="/admin/transaksi/cetak" class="btn btn-md btn-primary">Check Out</a>
+            </div>
         </div>
     </section>
 
