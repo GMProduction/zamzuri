@@ -22,7 +22,7 @@
                     <a class="btn btn-success quantity__plus"><span class="text-white">+</span></a>
                 </div>
 
-                <button type="button" class="btn btn-outline-danger w-25"><i data-feather="shopping-cart"></i></button>
+                <button type="button" onclick="addToCart()" class="btn btn-outline-danger w-25"><i data-feather="shopping-cart"></i></button>
                 <button type="button" class="btn  btn-primary w-50">Beli Sekarang</button>
 
             </div>
@@ -63,8 +63,19 @@
 
     <script>
 
-        function addToCart() {
-
+        async function addToCart() {
+            let data = {
+                '_token': "{{ csrf_token() }}",
+                id: '{{ $product->id }}',
+                harga: '{{ $product->harga }}',
+                qty: $('#qty').val()
+            };
+            try {
+                let res = await $.post('/ajax/addToCart', data);
+                alert(res['status'])
+            }catch (e) {
+                console.log(e)
+            }
         }
 
         $(document).ready(function () {

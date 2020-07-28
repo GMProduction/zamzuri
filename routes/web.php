@@ -15,15 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Main\MainController@index');
 Route::get('/product/{id}', 'Main\MainController@detail');
-
-Route::get('/cart', function () {
-    return view('cart');
-});
+Route::post('/ajax/addToCart', 'Main\TransactionController@addToCart');
+Route::get('/cart', 'Main\TransactionController@cartPage');
 
 //LOGIN
-Route::get('/login', function () {
-    return view('login.login');
-});
+Route::get('/login', 'Auth\AuthController@pageLogin');
+Route::post('/post-login', 'Auth\AuthController@login');
 
 Route::get('/daftaruser', function () {
     return view('login.daftaruser');
