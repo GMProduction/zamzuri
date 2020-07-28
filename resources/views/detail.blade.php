@@ -28,9 +28,6 @@
         </div>
     </section>
 
-
-
-
     <section class="container">
         <div class="row">
             @foreach($products as $v)

@@ -38,7 +38,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             @csrf
                             <input id="id" name="id" value="{{$produk->id}}" hidden>
                             <h6 class="heading-small text-muted mb-4">Data</h6>
@@ -68,7 +68,9 @@
                                                    class="form-control">
                                         </div>
                                     </div>
-
+                                    <div class="col-lg-12 mb-3">
+                                        <img src="{{asset('uploads/image')}}/{{$produk->url}}" height="200">
+                                    </div>
                                     <div class="col-lg-6">
                                         <a>Gambar</a>
                                         <div class="custom-file">
