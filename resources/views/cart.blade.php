@@ -75,6 +75,80 @@
                 <a href="/admin/transaksi/cetak" class="btn btn-md btn-primary">Check Out</a>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <div class="text-left mt-5">
+                    <h2><i class="mr-3" data-feather="twitch"></i>Input Voucher</h2>
+                </div>
+
+                <div class="d-block bg-gradient-blue mb-2" style="height: 3px; width: 300px; margin-top: 20px">
+
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="card p-3">
+
+                        <div class="form-group">
+                            <label for="voucher">Voucher</label>
+                            <input type="text" required id="voucher" name="voucher"
+                                   class="form-control">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 text-right">
+                                <p class="ml-auto mr-3">Voucher applied</p>
+                            </div>
+                            <div class="col-4 ">
+                                <button type="submit" class="btn btn-lg btn-primary">Apply Voucher</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                <div class="text-left mt-5">
+                    <h2><i class="mr-3" data-feather="twitch"></i>Total Harga</h2>
+                </div>
+
+                <div class="d-block bg-gradient-blue mb-2" style="height: 3px; width: 300px; margin-top: 20px">
+
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="card p-3">
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label  for="nama">Sub Total</label>
+                                <input type="text" readonly id="nama" name="nama"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 mb-3">
+                            <div class="form-group">
+                                <label for="url">Diskon</label>
+                                <input type="number" readonly id="harga" name="harga"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="url">Total</label>
+                                <input type="number" readonly id="harga" name="harga"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 

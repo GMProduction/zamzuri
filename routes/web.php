@@ -18,6 +18,11 @@ Route::get('/product/{id}', 'Main\MainController@detail');
 Route::post('/ajax/addToCart', 'Main\TransactionController@addToCart');
 Route::get('/cart', 'Main\TransactionController@cartPage');
 
+
+Route::get('/payment', function () {
+    return view('payment');
+});
+
 //LOGIN
 Route::get('/login', 'Auth\AuthController@pageLogin');
 Route::post('/post-login', 'Auth\AuthController@login');
@@ -49,3 +54,25 @@ Route::post('/admin/detailtransaksi/{id}','Admin\TransaksiController@detail');
 Route::get('/admin/user', 'Admin\UserController@index');
 
 Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi')->name('cetakAdminDataTransaksi');
+
+
+//USER
+Route::get('/user', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user/transaksi', function () {
+    return view('user.transaksi.transaksi');
+});
+
+Route::get('/user/profil', function () {
+    return view('user.profil.profil');
+});
