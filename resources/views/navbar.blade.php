@@ -39,10 +39,13 @@
                 <a class="nav-item nav-link text-sm ml-3" href="#">Kontak Kami</a>
                 <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="#"><i data-feather="shopping-cart"></i></a>
 
+                @auth()
                 <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="#">Dashboard</a>
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="#">Login</a>
                 <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
-
+                @endauth
+                @guest()
+                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="#">Login</a>
+                @endguest
             </div>
         </div>
 
