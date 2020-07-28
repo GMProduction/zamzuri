@@ -28,6 +28,8 @@ class MainController extends CustomController
     public function detail($id)
     {
         $product = Products::findOrFail($id);
-        return view('detail')->with(['product' => $product]);
+        $products = Products::all();
+        $products->take(4);
+        return view('detail')->with(['product' => $product, 'products' => $products->take(4)]);
     }
 }

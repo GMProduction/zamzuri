@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>admin</title>
     <!-- Favicon -->
 {{--    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">--}}
 <!-- Fonts -->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
     <link rel="stylesheet" href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
@@ -37,14 +39,14 @@
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link text-sm ml-3" href="#">Beranda</a>
                 <a class="nav-item nav-link text-sm ml-3" href="#">Kontak Kami</a>
-                <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="#"><i data-feather="shopping-cart"></i></a>
+                <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="/cart"><i data-feather="shopping-cart"></i></a>
 
                 @auth()
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="#">Dashboard</a>
+                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/dashboard">Dashboard</a>
                 <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
                 @endauth
                 @guest()
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="#">Login</a>
+                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/login">Login / Register</a>
                 @endguest
             </div>
         </div>
