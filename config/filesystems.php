@@ -60,6 +60,12 @@ return [
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
+        'bukti' => [
+            'driver' => 'local',
+            'root' => public_path() . '/uploads/bukti',
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
         'upload' => [
             'driver' => 'local',
             'root' => public_path() . '/images/uploads',

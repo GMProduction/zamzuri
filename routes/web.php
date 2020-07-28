@@ -42,16 +42,10 @@ Route::post('/admin/tambahproduk', 'Admin\ProdukController@addForm');
 Route::get('/admin/editproduk/{id}', 'Admin\ProdukController@editForm');
 Route::post('/admin/editproduk/{id}', 'Admin\ProdukController@editForm');
 
-Route::get('/admin/transaksi', function () {
-    return view('admin.transaksi.transaksi');
-});
+Route::get('/admin/transaksi', 'Admin\TransaksiController@index');
+Route::get('/admin/detailtransaksi/{id}','Admin\TransaksiController@detail');
+Route::post('/admin/detailtransaksi/{id}','Admin\TransaksiController@detail');
 
-Route::get('/admin/detailtransaksi', function () {
-    return view('admin.transaksi.detailTransaksi');
-});
-
-Route::get('/admin/user', function () {
-    return view('admin.user.user');
-});
+Route::get('/admin/user', 'Admin\UserController@index');
 
 Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi')->name('cetakAdminDataTransaksi');

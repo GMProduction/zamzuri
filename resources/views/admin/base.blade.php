@@ -38,21 +38,21 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/">
+                        <a class="nav-link " id="dashboard" href="/admin/">
                             <i data-feather="menu"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/produk">
+                        <a class="nav-link " id="produk" href="/admin/produk">
                             <i data-feather="camera"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Produk</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/transaksi">
+                        <a class="nav-link " id="transaksi" href="/admin/transaksi">
                             <i data-feather="book"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Transaksi</span>
                         </a>
@@ -60,7 +60,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/user">
+                        <a class="nav-link " id="user" href="/admin/user">
                             <i data-feather="user"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Data User</span>
                         </a>
@@ -176,6 +176,7 @@
 
 <!-- Argon JS -->
 <script src="{{asset('assets/js/argon.js?v=1.2.0')}}"></script>
+<script src="{{asset('assets/js/componen.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/DataTables/datatables.min.js')}}"></script>
 <script>
     feather.replace()

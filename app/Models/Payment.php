@@ -17,4 +17,8 @@ class Payment extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function vendor(){
+        return $this->belongsTo(Vendor::class, 'vendors_id');
+    }
 }
