@@ -11,12 +11,14 @@
 
             <div class="col-5">
                 <p style="font-size: 30px; font-weight: bold" class="mb-3">{{ $product->nama }}</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50" >{{ $product->deskripsi }}</p>
-                <p style="font-size: 20px; font-weight: bold" class="text-primary mb-4">Rp. {{ number_format($product->harga, 0, ',', '.') }} /Hari</p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50">{{ $product->deskripsi }}</p>
+                <p style="font-size: 20px; font-weight: bold" class="text-primary mb-4">
+                    Rp. {{ number_format($product->harga, 0, ',', '.') }} /Hari</p>
 
                 <div style="display: flex" class="mb-4">
-                    <a href="#" class="btn btn-danger mr-0 quantity__minus" ><span>-</span></a>
-                    <input name="quantity" id="qty" type="number"  class="text-center quantity__input" value="1" style="height: 45px; width: 70px; border: 1px solid #e8e3e3">
+                    <a href="#" class="btn btn-danger mr-0 quantity__minus"><span>-</span></a>
+                    <input name="quantity" id="qty" type="number" class="text-center quantity__input" value="1"
+                           style="height: 45px; width: 70px; border: 1px solid #e8e3e3">
                     <a class="btn btn-success quantity__plus"><span class="text-white">+</span></a>
                 </div>
 
@@ -44,8 +46,10 @@
                              alt="Card image cap" style="height: 150px; object-fit: cover">
                         <div class="card-body">
                             <h5 class="card-title mb-0">{{ $v->nama }}</h5>
-                            <h4 class="card-title text-primary mt-0 mb-1">Rp. {{ number_format($v->harga, 0, ',', '.') }}/ hari</h4>
-                            <p class="card-text text-sm text-black-50" style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
+                            <h4 class="card-title text-primary mt-0 mb-1">
+                                Rp. {{ number_format($v->harga, 0, ',', '.') }}/ hari</h4>
+                            <p class="card-text text-sm text-black-50"
+                               style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
                             <a href="/product/{{ $v->id }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
@@ -58,11 +62,16 @@
 @section('script')
 
     <script>
-        $(document).ready(function() {
+
+        function addToCart() {
+
+        }
+
+        $(document).ready(function () {
             const minus = $('.quantity__minus');
             const plus = $('.quantity__plus');
             const input = $('.quantity__input');
-            minus.click(function(e) {
+            minus.click(function (e) {
                 e.preventDefault();
                 var value = input.val();
                 if (value > 1) {
@@ -71,7 +80,7 @@
                 input.val(value);
             });
 
-            plus.click(function(e) {
+            plus.click(function (e) {
                 e.preventDefault();
                 var value = input.val();
                 value++;
