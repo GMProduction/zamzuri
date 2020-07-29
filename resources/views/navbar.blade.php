@@ -47,7 +47,7 @@
                     @else
                         <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/user">Dashboard</a>
                     @endif
-                    <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
+                    <a class="nav-item nav-link text-sm text-danger ml-3" href="/logout">logout</a>
                 @endauth
                 @guest()
                     <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/login">Login / Register</a>
