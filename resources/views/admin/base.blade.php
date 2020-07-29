@@ -9,7 +9,7 @@
     <title>admin</title>
     <!-- Favicon -->
 {{--    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">--}}
-    <!-- Fonts -->
+<!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
     <link rel="stylesheet" href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="{{asset('/assets/css/argon.css?v=1.2.0')}}" type="text/css">
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="{{asset('assets/js/swal.min.js')}}"></script>
+    @if (auth()->user()->roles != 'admin')
+        <script>
+            window.location = '/'
+        </script>
+    @endif
 
 </head>
 
@@ -29,7 +34,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header" style="margin-top: 20px; margin-left: 24px; height: 40px; text-align: start">
-{{--            <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">--}}
+            {{--            <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">--}}
             <a>PERSEWAAN</a>
         </div>
         <div class="navbar-inner">
@@ -65,7 +70,6 @@
                             <span class="nav-link-text" style="margin-left: 10px">Data User</span>
                         </a>
                     </li>
-
 
 
                 </ul>
