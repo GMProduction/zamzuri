@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Main;
 use App\Helper\CustomController;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Payment;
 use App\Models\Products;
 use App\Models\Transaction;
+use App\Models\Vendor;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Builder;
@@ -69,7 +71,7 @@ class TransactionController extends CustomController
 
             $transactions = $this->insert(Transaction::class, $data);
             Cart::where('transactions_id', '=', null)->where('user_id', '=', auth()->id())->update(['transactions_id' => $transactions->id]);
-            return $this->jsonResponse('success', 200);
+            return $this->jsonResponse($transactions->id, 200);
         } catch (\Exception $e) {
             return $this->jsonResponse('failed ' . $e->getMessage(), 500);
         }
@@ -82,5 +84,31 @@ class TransactionController extends CustomController
         })->get();
 //        return $transaction->toArray();
         return view('user.transaksi.transaksi')->with(['transaction' => $transaction]);
+    }
+
+    public function pagePayment($id)
+    {
+        $vendors = Vendor::all();
+        $transaction = Transaction::with('cart.product')->whereHas('cart', function (Builder $query){
+            $query->where('user_id', '=', auth()->id());
+        })->where('id', '=', $id)->firstOrFail();
+        return view('payment')->with(['transaction' => $transaction, 'vendors' => $vendors]);
+    }
+
+    public function send()
+    {
+        $image = $this->generateImageName('gambar');
+        $data = [
+            'transactions_id' => $this->postField('id'),
+            'vendors_id' => $this->postField('bank'),
+            'user_id' => auth()->id(),
+            'url' => $image,
+            'description' => '',
+            'status' => '0',
+        ];
+
+        $this->uploadImage('gambar', $image, 'bukti');
+        $this->insert(Payment::class, $data);
+        return redirect('/');
     }
 }

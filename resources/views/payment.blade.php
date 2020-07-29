@@ -29,18 +29,18 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            {{--                    @foreach($produk as $p)--}}
-                            <tr>
-                                <td class="text-center"><img
-                                        src="https://cdn.mos.cms.futurecdn.net/7UKru4akuGz2QcUPp6smqX.jpg"
-                                        style="height: 100px; width: 100px; object-fit: cover"></td>
-                                <td class="text-center">Kamera DSLR</td>
-                                <td class="text-center"> 20</td>
-                                <td class="text-center"> 2</td>
-                                <td class="text-center">@rupiahPrefix(100000)</td>
+                            @foreach($transaction->cart as $v)
+                                <tr>
+                                    <td class="text-center"><img
+                                            src="{{ asset('/uploads/image') }}/{{ $v->product->url }} "
+                                            style="height: 100px; width: 100px; object-fit: cover"></td>
+                                    <td class="text-center">{{ $v->product->nama }}</td>
+                                    <td class="text-center"> {{ number_format($v->harga, 0, ',', '.') }}</td>
+                                    <td class="text-center"> {{ $v->qty }}</td>
+                                    <td class="text-center">{{ number_format($v->harga * $v->qty, 0, ',', '.')}}</td>
 
-                            </tr>
-                            {{--                    @endforeach--}}
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="tanggalPinjam">Tanggal Pinjam</label>
                                     <input type="text" id="tanggalPinjam" name="tanggalPinjam" readonly
-                                           class="form-control" value="">
+                                           class="form-control" value="{{ $transaction->tgl_sewa }}">
                                 </div>
                             </div>
 
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="estimasi">Tanggal Estimasi Kembali</label>
                                     <input type="text" id="estimasi" name="estimasi" readonly
-                                           class="form-control" value="">
+                                           class="form-control" value="{{ $transaction->tgl_tempo }}">
                                 </div>
                             </div>
 
@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="status">Status</label>
                                     <input type="text" id="status" name="status" readonly
-                                           class="form-control" value="">
+                                           class="form-control" value="{{ $transaction->status }}">
                                 </div>
                             </div>
 
@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="total">Total Harga</label>
                                     <input type="text" id="total" name="total" readonly
-                                           class="form-control" value="">
+                                           class="form-control" value="{{ $transaction->nominal -  $transaction->discount}}">
                                 </div>
                             </div>
                         </div>
@@ -100,8 +100,9 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data" action="/payment/send">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $transaction->id }}">
                             <h6 class="heading-small text-muted mb-4">Data</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
@@ -109,8 +110,9 @@
                                     <div class="form-group col-lg-12">
                                         <label for="bank">Bank</label>
                                         <select class="form-control" id="bank" name="bank">
-                                            <option value="bca">BCA</option>
-                                            <option value="bri">BRI</option>
+                                            @foreach($vendors as $v)
+                                            <option value="{{ $v->id }}">{{ $v->nama }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 

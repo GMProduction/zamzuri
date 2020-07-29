@@ -21,9 +21,8 @@ Route::get('/ajax/voucher', 'Main\VoucherController@getVoucher');
 Route::post('/ajax/cekout', 'Main\TransactionController@cekOut');
 
 
-Route::get('/payment', function () {
-    return view('payment');
-});
+Route::get('/payment/{id}', 'Main\TransactionController@pagePayment');
+Route::post('/payment/send', 'Main\TransactionController@send');
 
 //LOGIN
 Route::get('/login', 'Auth\AuthController@pageLogin');

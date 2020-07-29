@@ -66,7 +66,7 @@
                                     </td>
 
                                     <td class="budget">
-                                        1{{ number_format($v->discount, 0, ',', '.') }}
+                                        {{ number_format($v->discount, 0, ',', '.') }}
                                     </td>
 
                                     <td class="budget">

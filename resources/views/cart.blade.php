@@ -219,10 +219,9 @@
                 };
                 let res = await $.post('/ajax/cekout', data);
                 if (res['status'] === 200 && res['payload'] !== null) {
-                    let amount = res['payload']['nominal'];
-                    diskon = amount;
+                    let id = res['payload'];
                     alert('Sewa Berhasil');
-                    window.location.href = '/';
+                    window.location.href = '/payment/'+id;
                 } else {
                     alert('Sewa gagal');
                 }
