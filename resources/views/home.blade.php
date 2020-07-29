@@ -40,7 +40,7 @@
             @foreach($products as $v)
                 <div class="col-3">
                     <div class="card" style="height: 350px">
-                        <img class="card-img-top" src="{{asset('/images/uploads')}} / {{ $v->url }}" alt="Card image cap"
+                        <img class="card-img-top" src="{{asset('uploads/image')}}/{{$v->url}}" alt="Card image cap"
                              style="height: 150px; object-fit: cover">
                         <div class="card-body">
                             <h5 class="card-title mb-0">{{ $v->nama }}</h5>
