@@ -72,11 +72,12 @@
             </div>
 
             <div class="col-lg-2 mt-auto mb-auto ml-auto">
-                <a href="/admin/transaksi/cetak" class="btn btn-md btn-primary">Check Out</a>
+                <a href="#" id="btn-cekout" class="btn btn-md btn-primary">Check Out</a>
             </div>
         </div>
 
-
+        <div>Rincian Sewa = <span id="temp-sub">0</span> x ( <span id="lama">0</span> ) Hari = Rp. <span
+                id="temp-tot">0</span></div>
         <div class="row">
             <div class="col-6">
                 <div class="text-left mt-5">
@@ -98,10 +99,11 @@
 
                         <div class="row">
                             <div class="col-8 text-right">
-                                <p class="ml-auto mr-3">Voucher applied</p>
+                                <p class="ml-auto mr-3" id="stat-voucher"></p>
                             </div>
                             <div class="col-4 ">
-                                <button type="submit" class="btn btn-lg btn-primary">Apply Voucher</button>
+                                <button id="btn-voucher" type="submit" class="btn btn-lg btn-primary">Apply Voucher
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -123,8 +125,8 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label  for="nama">Sub Total</label>
-                                <input type="text" readonly id="nama" name="nama"
+                                <label for="nama">Sub Total</label>
+                                <input type="text" readonly id="subTotal" name="subTotal"
                                        class="form-control">
                             </div>
                         </div>
@@ -132,7 +134,7 @@
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="url">Diskon</label>
-                                <input type="number" readonly id="harga" name="harga"
+                                <input type="number" readonly id="diskon" name="diskon"
                                        class="form-control">
                             </div>
                         </div>
@@ -140,7 +142,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label for="url">Total</label>
-                                <input type="number" readonly id="harga" name="harga"
+                                <input type="number" readonly id="total" name="total"
                                        class="form-control">
                             </div>
                         </div>
@@ -156,11 +158,75 @@
 
 @section('script')
 
-<script>
-    $(document).ready(function () {
-        // $('#sewa').on('change', function () {
-        //     alert($('#sewa').val())
-        // });
-    });
-</script>
+    <script>
+        let subtotal = 0, diskon = 0, total = 0, lama = 0;
+        var date_diff_indays = function (date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+        };
+
+        function hitungTotal() {
+            let tgl1 = $('#sewa').val();
+            let tgl2 = $('#kembali').val();
+            let tempSubTotal = '{{ $subTotal }}';
+            lama = date_diff_indays(tgl1, tgl2);
+            subtotal = tempSubTotal * lama;
+            total = subtotal - diskon;
+            $('#subTotal').val(subtotal);
+            $('#temp-sub').html(tempSubTotal);
+            $('#lama').html(lama);
+            $('#temp-tot').html(subtotal);
+            $('#diskon').val(diskon);
+            $('#total').val(total);
+        }
+
+        $(document).ready(function () {
+            hitungTotal();
+            $('#sewa').on('change', function () {
+                hitungTotal();
+            });
+            $('#kembali').on('change', function () {
+                hitungTotal();
+            });
+
+
+            $('#btn-voucher').on('click', async function (e) {
+                e.preventDefault();
+                let code = $('#voucher').val();
+                let res = await $.get('/ajax/voucher?code=' + code);
+                if (res['status'] === 200 && res['payload'] !== null) {
+                    let amount = res['payload']['nominal'];
+                    diskon = amount;
+                    $('#stat-voucher').html('Voucher Tersedia senilai Rp. ' + amount);
+                    hitungTotal();
+                } else {
+                    diskon = 0;
+                    $('#stat-voucher').html('Voucher Tidak Tersedia')
+                    hitungTotal();
+                }
+            });
+
+            $('#btn-cekout').on('click', async function (e) {
+                e.preventDefault();
+                let code = $('#voucher').val();
+                let data = {
+                    '_token': '{{ csrf_token() }}',
+                    diskon: $('#diskon').val(),
+                    nominal: $('#total').val(),
+                    sewa: $('#sewa').val(),
+                    kembali: $('#kembali').val(),
+                };
+                let res = await $.post('/ajax/cekout', data);
+                if (res['status'] === 200 && res['payload'] !== null) {
+                    let amount = res['payload']['nominal'];
+                    diskon = amount;
+                    alert('Sewa Berhasil');
+                    window.location.href = '/';
+                } else {
+                    alert('Sewa gagal');
+                }
+            });
+        });
+    </script>
 @endsection

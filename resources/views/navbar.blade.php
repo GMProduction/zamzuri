@@ -42,7 +42,7 @@
                 <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="/cart"><i data-feather="shopping-cart"></i></a>
 
                 @auth()
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/dashboard">Dashboard</a>
+                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/user">Dashboard</a>
                 <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
                 @endauth
                 @guest()

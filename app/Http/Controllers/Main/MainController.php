@@ -32,4 +32,9 @@ class MainController extends CustomController
         $products->take(4);
         return view('detail')->with(['product' => $product, 'products' => $products->take(4)]);
     }
+
+    public function dashboard()
+    {
+        return view('user.dashboard');
+    }
 }

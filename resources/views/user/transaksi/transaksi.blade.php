@@ -40,55 +40,57 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">#</th>
-                                <th scope="col" class="sort" data-sort="budget">Nama Produk</th>
+                                <th scope="col" class="sort" data-sort="budget">No. Transaksi</th>
+                                <th scope="col" class="sort" data-sort="status">Nominal</th>
+                                <th scope="col" class="sort" data-sort="status">Diskon</th>
+                                <th scope="col" class="sort" data-sort="status">Total</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal Sewa</th>
-                                <th scope="col" class="sort" data-sort="status">Estimasi Kembali</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal Kembali</th>
-                                <th scope="col" class="sort" data-sort="status">Pembayaran</th>
-                                <th scope="col" class="sort" data-sort="status">Denda</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col" class="sort" data-sort="status">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
+                            @foreach($transaction as $v)
+                                <tr>
+                                    <td class="budget">
+                                        {{ $loop->index + 1}}
+                                    </td>
 
-                                <td class="budget">
-                                    1
-                                </td>
+                                    <td class="budget">
+                                        {{ $v->no_transaksi }}
+                                    </td>
 
-                                <td class="budget">
-                                    Kamera
-                                </td>
+                                    <td class="budget">
+                                        {{ number_format($v->nominal, 0, ',', '.') }}
+                                    </td>
 
-                                <td class="budget">
-                                    12 Mei 2020
-                                </td>
+                                    <td class="budget">
+                                        1{{ number_format($v->discount, 0, ',', '.') }}
+                                    </td>
 
-                                <td class="budget">
-                                    14 Mei 2020
-                                </td>
+                                    <td class="budget">
+                                        {{ number_format($v->nominal - $v->discount, 0, ',', '.') }}
+                                    </td>
 
-                                <td class="budget">
-                                    Belum
-                                </td>
+                                    <td class="budget">
+                                        {{ $v->tgl_sewa }}
+                                    </td>
 
-                                <td class="budget">
-                                    -
-                                </td>
+                                    <td class="budget">
+                                        {{ $v->tgl_tempo }}
+                                    </td>
 
-                                <td class="budget">
-                                    @rupiahPrefix(2000000)
-                                </td>
+                                    <td class="budget">
+                                        {{ $v->status }}
+                                    </td>
 
-                                <td class="budget">
-                                    Over Due
-                                </td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-primary">detail</a>
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                                <td>
-                                    <a href="" class="btn btn-sm btn-primary">detail</a>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
