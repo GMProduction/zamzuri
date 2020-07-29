@@ -58,7 +58,7 @@ class AuthController extends CustomController
         }
         $data = [
             'username' => $this->postField('username'),
-            'username' => $this->postField('email'),
+            'email' => $this->postField('email'),
             'password' => Hash::make($this->postField('password')),
             'roles' => 'member'
         ];

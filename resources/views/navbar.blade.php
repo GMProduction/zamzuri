@@ -35,18 +35,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link text-sm ml-3" href="#">Beranda</a>
                 <a class="nav-item nav-link text-sm ml-3" href="#">Kontak Kami</a>
                 <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="/cart"><i data-feather="shopping-cart"></i></a>
 
                 @auth()
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/dashboard">Dashboard</a>
-                <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
+                    @if(auth()->user()->roles == 'admin')
+                        <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/admin">Dashboard</a>
+                    @else
+                        <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/user">Dashboard</a>
+                    @endif
+                    <a class="nav-item nav-link text-sm text-danger ml-3" href="#">logout</a>
                 @endauth
                 @guest()
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/login">Login / Register</a>
+                    <a class="nav-item nav-link text-sm ml-7 btn btn-outline-primary" style="font-weight: bold" href="/login">Login / Register</a>
                 @endguest
             </div>
         </div>
@@ -67,7 +71,9 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <h6>About</h6>
-                    <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+                    <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the upcoming programmers with the code. Scanfcode focuses on providing the most
+                        efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS,
+                        Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
