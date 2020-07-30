@@ -45,6 +45,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link active" href="/admin/promo">
+                            <i data-feather="tag"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Promo</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link active" href="/admin/produk">
                             <i data-feather="camera"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Produk</span>

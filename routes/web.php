@@ -59,6 +59,13 @@ Route::get('/admin/detailtransaksi', function () {
     return view('admin.transaksi.detailTransaksi');
 });
 
+Route::get('/admin/promo', function () {
+    return view('admin.promo.promo');
+});
+
+Route::get('/admin/tambahpromo', function () {
+    return view('admin.promo.tambahpromo');
+});
 
 Route::get('/admin/user', function () {
     return view('admin.user.user');
@@ -72,13 +79,6 @@ Route::get('/user', function () {
     return view('user.dashboard');
 });
 
-Route::get('/user', function () {
-    return view('user.dashboard');
-});
-
-Route::get('/user', function () {
-    return view('user.dashboard');
-});
 
 Route::get('/user/transaksi', function () {
     return view('user.transaksi.transaksi');
