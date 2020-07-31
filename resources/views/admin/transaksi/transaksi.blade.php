@@ -67,7 +67,7 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">#</th>
-                                <th scope="col" class="sort" data-sort="budget">Nama Produk</th>
+                                <th scope="col" class="sort" data-sort="budget">No Transaksi</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal Sewa</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal Kembali</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>

@@ -72,12 +72,10 @@ Route::get('/user', function () {
     return view('user.dashboard');
 });
 
-Route::get('/user/transaksi', function () {
-    return view('user.transaksi.transaksi');
-});
+Route::get('/user/transaksi', 'Member\TransaksiController@index');
+Route::get('/user/transaksi', 'Member\TransaksiController@index');
 
-Route::get('/user/profil', function () {
-    return view('user.profil.profil');
-});
+Route::get('/user/profil', 'Member\ProfileController@index');
+Route::post('/user/profil', 'Member\ProfileController@index');
 
 Route::get('/logout', 'Auth\AuthController@logout');

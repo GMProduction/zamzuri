@@ -21,7 +21,10 @@ class LaporanController extends Controller
 
         $transaksi = Transaction::whereBetween('created_at',[$awal,$akhir])->with(['cart.user.profile','payment.vendor','cart.product'])->get();
 //        return $transaksi->toArray();
-        return view('admin.transaksi.cetak')->with(['transaksi' => $transaksi]);
+        $data['transaksi'] = $transaksi;
+        $data['awal'] = $awal;
+        $data['akhir'] = $akhir;
+        return view('admin.transaksi.cetak')->with($data);
     }
 
     public function cetakAdminDataTransaksi(Request $request)
