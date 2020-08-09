@@ -53,6 +53,18 @@ class TransactionController extends CustomController
         }
     }
 
+    public function deleteCart()
+    {
+        try {
+            $id = $this->postField('id');
+            Cart::destroy($id);
+            return $this->jsonResponse('success', 200);
+        } catch (\Exception $er) {
+            return $this->jsonResponse('error '.$er, 500);
+
+        }
+    }
+
     public function cekOut()
     {
         try {

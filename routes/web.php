@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Main\MainController@index');
 Route::get('/product/{id}', 'Main\MainController@detail');
 Route::post('/ajax/addToCart', 'Main\TransactionController@addToCart');
+Route::post('/ajax/deleteCart', 'Main\TransactionController@deleteCart');
 Route::get('/cart', 'Main\TransactionController@cartPage');
 Route::get('/ajax/voucher', 'Main\VoucherController@getVoucher');
 Route::post('/ajax/cekout', 'Main\TransactionController@cekOut');

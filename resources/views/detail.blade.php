@@ -5,7 +5,7 @@
     <section class="container mt-5 mb-5">
         <div class="row">
             <div class="col-7">
-                <img src="{{asset('/images/uploads')}} / {{ $product->url }}"
+                <img src="{{asset('/uploads/image')}}/{{ $product->url }}"
                      style="width: 100%; height: 300px; object-fit: cover">
             </div>
 
@@ -22,8 +22,8 @@
                     <a class="btn btn-success quantity__plus"><span class="text-white">+</span></a>
                 </div>
 
-                <button type="button" onclick="addToCart()" class="btn btn-outline-danger w-25"><i data-feather="shopping-cart"></i></button>
-                <button type="button" class="btn  btn-primary w-50">Beli Sekarang</button>
+                <button type="button" onclick="addToCart(false)" class="btn btn-outline-danger w-25"><i data-feather="shopping-cart"></i></button>
+                <button type="button" onclick="addToCart(true)" class="btn  btn-primary w-50">Beli Sekarang</button>
 
             </div>
         </div>
@@ -42,7 +42,7 @@
             @foreach($products as $v)
                 <div class="col-3">
                     <div class="card" style="height: 350px">
-                        <img class="card-img-top" src="{{asset('/images/uploads')}} / {{ $v->url }}"
+                        <img class="card-img-top" src="{{asset('/uploads/image')}}/{{ $v->url }}"
                              alt="Card image cap" style="height: 150px; object-fit: cover">
                         <div class="card-body">
                             <h5 class="card-title mb-0">{{ $v->nama }}</h5>
@@ -63,7 +63,7 @@
 
     <script>
 
-        async function addToCart() {
+        async function addToCart(redirect) {
             let data = {
                 '_token': "{{ csrf_token() }}",
                 id: '{{ $product->id }}',
@@ -72,7 +72,15 @@
             };
             try {
                 let res = await $.post('/ajax/addToCart', data);
-                alert(res['status'])
+                if(res['status'] === 200){
+                    alert('Sewa Berhasil')
+                    if (redirect){
+                        window.location.href = '/cart'
+                    }
+                }else{
+                    alert('Gagal Sewa!')
+                }
+
             }catch (e) {
                 console.log(e)
             }

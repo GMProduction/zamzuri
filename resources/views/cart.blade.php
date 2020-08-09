@@ -26,6 +26,7 @@
                         <th scope="col" class="sort text-center" data-sort="budget">Qty</th>
                         <th scope="col" class="sort text-center" data-sort="completion">Harga (hari)</th>
                         <th scope="col" class="sort text-center" data-sort="completion">Total</th>
+                        <th scope="col" class="sort text-center" data-sort="completion">action</th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -33,12 +34,13 @@
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
                             <td class="text-center"><img
-                                    src="{{asset('/images/uploads')}} / {{ $v->product->url }}"
+                                    src="{{asset('/uploads/image')}}/{{ $v->product->url }}"
                                     style="height: 100px; width: 100px; object-fit: cover"></td>
                             <td class="text-center">{{ $v->product->nama }}</td>
                             <td class="text-center"> {{ $v->qty }}</td>
                             <td class="text-center">{{ number_format($v->harga, 0, ',', '.') }}</td>
                             <td class="text-center">{{ number_format($v->harga * $v->qty, 0, ',', '.') }}</td>
+                            <td class="text-center"><a href="#" onclick="hapus('{{ $v->id }}')">Batal</a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -181,6 +183,33 @@
             $('#total').val(total);
         }
 
+        function hapus(id) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apa anda yakin untuk menghapus keranjang ini ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then(async (result) => {
+                if (result.value) {
+                    let data = {
+                        '_token' : '{{csrf_token()}}',
+                        id: id
+                    };
+                    let res = await $.post('/ajax/deleteCart',data);
+                    if(res['status'] === 200){
+                        alert('Berhasil Menghapus Keranjang!');
+                        window.location.reload();
+                    }else{
+                        alert('Gagal MEnghapus Keranjang!')
+                    }
+
+                }
+            })
+        }
         $(document).ready(function () {
             hitungTotal();
             $('#sewa').on('change', function () {
@@ -213,7 +242,7 @@
                 let data = {
                     '_token': '{{ csrf_token() }}',
                     diskon: $('#diskon').val(),
-                    nominal: $('#total').val(),
+                    nominal: $('#subTotal').val(),
                     sewa: $('#sewa').val(),
                     kembali: $('#kembali').val(),
                 };
