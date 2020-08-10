@@ -98,6 +98,13 @@ class TransactionController extends CustomController
         return view('user.transaksi.transaksi')->with(['transaction' => $transaction]);
     }
 
+    public function detailHistory($id)
+    {
+        $trans = Transaction::with('cart.product')->where('id', '=', $id)->firstOrFail();
+//        return $trans->toArray();
+        return view('user.transaksi.detailPesanan')->with(['trans' => $trans]);
+    }
+
     public function pagePayment($id)
     {
         $vendors = Vendor::all();
@@ -123,4 +130,6 @@ class TransactionController extends CustomController
         $this->insert(Payment::class, $data);
         return redirect('/');
     }
+
+
 }

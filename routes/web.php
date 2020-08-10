@@ -65,9 +65,19 @@ Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi'
 Route::get('/user', 'Main\MainController@dashboard');
 
 Route::get('/user/transaksi', 'Main\TransactionController@pageTransaksi');
-
+Route::get('/user/transaksi/{id}', 'Main\TransactionController@detailHistory');
 Route::get('/user/profil', function () {
     return view('user.profil.profil');
 });
+
+    Route::get('/admin/laporan/penyewaan', 'Laporan\PenyewaanController@index');
+    Route::get('/payment', 'Laporan\PembayaranController@index');
+    Route::get('/items', 'Laporan\BarangTerjualController@index');
+    Route::get('/selling/list', 'Laporan\PenjualanController@laporanPenjualan');
+    Route::get('/payment/list', 'Laporan\PembayaranController@laporanPembayaran');
+    Route::get('/items/list', 'Laporan\BarangTerjualController@laporanBarang');
+    Route::get('/selling/print', 'Laporan\PenjualanController@cetak');
+    Route::get('/payment/print', 'Laporan\PembayaranController@cetak');
+    Route::get('/items/print', 'Laporan\BarangTerjualController@cetak');
 
 Route::get('/logout', 'Auth\AuthController@logout');
