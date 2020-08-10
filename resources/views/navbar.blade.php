@@ -37,8 +37,8 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link text-sm ml-3" href="#">Beranda</a>
-                <a class="nav-item nav-link text-sm ml-3" href="#">Kontak Kami</a>
+                <a class="nav-item nav-link text-sm ml-3" href="/">Beranda</a>
+                <a class="nav-item nav-link text-sm ml-3" href="/contact">Kontak Kami</a>
                 <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="/cart"><i data-feather="shopping-cart"></i></a>
 
                 @auth()

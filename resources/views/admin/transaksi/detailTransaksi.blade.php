@@ -180,7 +180,6 @@
                                 <h6 class="heading-small text-muted mb-1"></h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
-
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="tanggalPinjam">Tanggal Pinjam</label>
@@ -207,9 +206,23 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="total">Total Harga</label>
-                                                <input type="text" id="total" name="total" readonly
+                                                <label class="form-control-label" for="total">Sub Total</label>
+                                                <input type="text" id="subTotal" name="subTotal" readonly
                                                        class="form-control" value="Rp. {{number_format($transaksi->nominal,0,',','.')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="total">Discount</label>
+                                                <input type="text" id="discount" name="discount" readonly
+                                                       class="form-control" value="Rp. {{number_format($transaksi->discount,0,',','.')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="total">Total</label>
+                                                <input type="text" id="total" name="total" readonly
+                                                       class="form-control" value="Rp. {{number_format($transaksi->nominal - $transaksi->discount,0,',','.')}}">
                                             </div>
                                         </div>
 

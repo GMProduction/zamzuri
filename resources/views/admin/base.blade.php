@@ -71,6 +71,19 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link " id="transaksi" href="/admin/laporan/penyewaan">
+                            <i data-feather="book"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Laporan Penyewaan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="transaksi" href="/admin/transaksi">
+                            <i data-feather="book"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Laporan Daftar Barang</span>
+                        </a>
+                    </li>
+
 
                 </ul>
                 <!-- Divider -->

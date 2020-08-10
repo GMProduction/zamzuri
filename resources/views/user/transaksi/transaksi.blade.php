@@ -86,7 +86,7 @@
                                     </td>
 
                                     <td>
-                                        <a href="" class="btn btn-sm btn-primary">detail</a>
+                                        <a href="/user/transaksi/{{$v->id}}" class="btn btn-sm btn-primary">detail</a>
                                     </td>
                                 </tr>
                             @endforeach
