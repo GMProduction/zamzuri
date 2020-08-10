@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/argon.css?v=1.2.0')}}" type="text/css">
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="{{asset('assets/js/swal.min.js')}}"></script>
+    @yield('css')
     @if (auth()->user()->roles != 'admin')
         <script>
             window.location = '/'
@@ -194,7 +195,9 @@
 <!-- Argon JS -->
 <script src="{{asset('assets/js/argon.js?v=1.2.0')}}"></script>
 <script src="{{asset('assets/js/componen.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('assets/DataTables/datatables.min.js')}}"></script>
+
 <script>
     feather.replace()
 </script>

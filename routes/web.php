@@ -53,8 +53,8 @@ Route::get('/admin/editproduk/{id}', 'Admin\ProdukController@editForm');
 Route::post('/admin/editproduk/{id}', 'Admin\ProdukController@editForm');
 
 Route::get('/admin/transaksi', 'Admin\TransaksiController@index');
-Route::get('/admin/detailtransaksi/{id}','Admin\TransaksiController@detail');
-Route::post('/admin/detailtransaksi/{id}','Admin\TransaksiController@detail');
+Route::get('/admin/detailtransaksi/{id}', 'Admin\TransaksiController@detail');
+Route::post('/admin/detailtransaksi/{id}', 'Admin\TransaksiController@detail');
 
 Route::get('/admin/user', 'Admin\UserController@index');
 
@@ -70,14 +70,16 @@ Route::get('/user/profil', function () {
     return view('user.profil.profil');
 });
 
-    Route::get('/admin/laporan/penyewaan', 'Laporan\PenyewaanController@index');
-    Route::get('/payment', 'Laporan\PembayaranController@index');
-    Route::get('/items', 'Laporan\BarangTerjualController@index');
-    Route::get('/selling/list', 'Laporan\PenjualanController@laporanPenjualan');
-    Route::get('/payment/list', 'Laporan\PembayaranController@laporanPembayaran');
-    Route::get('/items/list', 'Laporan\BarangTerjualController@laporanBarang');
-    Route::get('/selling/print', 'Laporan\PenjualanController@cetak');
-    Route::get('/payment/print', 'Laporan\PembayaranController@cetak');
-    Route::get('/items/print', 'Laporan\BarangTerjualController@cetak');
+Route::get('/admin/laporan/penyewaan', 'Laporan\PenyewaanController@index');
+Route::get('/admin/laporan/penyewaan/list', 'Laporan\PenyewaanController@laporanPenyewaan');
+Route::get('/admin/laporan/penyewaan/print', 'Laporan\PenyewaanController@cetak');
+Route::get('/payment', 'Laporan\PembayaranController@index');
+Route::get('/items', 'Laporan\BarangTerjualController@index');
+
+Route::get('/payment/list', 'Laporan\PembayaranController@laporanPembayaran');
+Route::get('/items/list', 'Laporan\BarangTerjualController@laporanBarang');
+
+Route::get('/payment/print', 'Laporan\PembayaranController@cetak');
+Route::get('/items/print', 'Laporan\BarangTerjualController@cetak');
 
 Route::get('/logout', 'Auth\AuthController@logout');
