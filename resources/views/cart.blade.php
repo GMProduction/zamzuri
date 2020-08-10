@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
                             <td class="text-center"><img
-                                    src="{{asset('/images/uploads')}} / {{ $v->product->url }}"
+                                    src="{{asset('/uploads/image')}} / {{ $v->product->url }}"
                                     style="height: 100px; width: 100px; object-fit: cover"></td>
                             <td class="text-center">{{ $v->product->nama }}</td>
                             <td class="text-center"> {{ $v->qty }}</td>
